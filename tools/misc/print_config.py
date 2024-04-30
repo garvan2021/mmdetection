@@ -50,8 +50,8 @@ def main():
         suffix = os.path.splitext(save_path)[-1]
         assert suffix in ['.py', '.json', '.yml']
 
-        if not os.path.exists(os.path.split(save_path)[0]):
-            os.makedirs(os.path.split(save_path)[0])
+        if os.path.split(save_path)[0]:
+            os.makedirs(os.path.split(save_path)[0], exist_ok=True)
         cfg.dump(save_path)
         print(f'Config saving at {save_path}')
 

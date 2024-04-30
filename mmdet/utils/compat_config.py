@@ -13,9 +13,18 @@ def compat_cfg(cfg):
     fields.
     """
     cfg = copy.deepcopy(cfg)
+    # v1.x compat to v2.x
     cfg = compat_imgs_per_gpu(cfg)
     cfg = compat_loader_args(cfg)
     cfg = compat_runner_args(cfg)
+
+    # v2.x compat to v3.x
+    cfg = compat_norm_pad(cfg)
+
+    return cfg
+
+
+def compat_norm_pad(cfg):
     return cfg
 
 
